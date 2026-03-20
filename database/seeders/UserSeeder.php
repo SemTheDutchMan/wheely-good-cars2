@@ -2,17 +2,20 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 use App\Models\User;
+use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
+        User::factory()->create([
+            'name' => 'Admin gebruiker',
+            'email' => 'admin@wheelygoodcars.test',
+            'phone_number' => '0612345678',
+            'is_admin' => true,
+        ]);
+
         User::factory()->count(150)->create();
     }
 }
