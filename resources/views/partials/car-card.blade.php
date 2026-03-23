@@ -1,13 +1,6 @@
 <a href="{{ route('car.show', $car) }}" class="car-card {{ $featured ? 'car-card-featured' : '' }}">
     <div class="car-card-media">
-        @if ($car->image)
-            <img src="{{ $car->image }}" alt="{{ $car->make }} {{ $car->model }}" loading="lazy">
-        @else
-            <div class="car-card-placeholder">
-                <span>{{ $car->make }}</span>
-                <strong>{{ $car->model }}</strong>
-            </div>
-        @endif
+        <img src="{{ $car->display_image_url }}" alt="{{ $car->make }} {{ $car->model }}" loading="lazy">
     </div>
 
     <div class="car-card-body">

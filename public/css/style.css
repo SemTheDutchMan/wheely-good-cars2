@@ -228,6 +228,13 @@ textarea {
     background: #e7e7e7;
 }
 
+.car-card-media img,
+.detail-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .car-card-placeholder {
     height: 220px;
     display: grid;
@@ -576,6 +583,12 @@ textarea {
     margin: 10px 0 0;
 }
 
+.detail-visual {
+    overflow: hidden;
+    min-height: 260px;
+    padding: 0;
+}
+
 @media (max-width: 1280px) {
     .offer-row {
         grid-template-columns: 120px 1fr 1fr;
@@ -654,3 +667,4 @@ textarea {
         grid-column: auto;
     }
 }
+

@@ -10,6 +10,10 @@
         <div class="progress-bar" style="width: 100%"></div>
     </div>
 
+    <div class="form-card detail-visual">
+        <img src="{{ $car->display_image_url }}" alt="{{ $car->make }} {{ $car->model }}" loading="lazy">
+    </div>
+
     <div class="form-card">
         <form action="{{ route('offercar.tags.store') }}" method="POST" class="stack-form">
             @csrf
@@ -31,3 +35,4 @@
         </form>
     </div>
 </x-base-layout>
+

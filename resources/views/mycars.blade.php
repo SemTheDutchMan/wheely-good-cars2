@@ -6,11 +6,7 @@
             @forelse ($cars as $car)
                 <article class="offer-row" data-car-row>
                     <div class="offer-thumb">
-                        @if ($car->image)
-                            <img src="{{ $car->image }}" alt="{{ $car->make }} {{ $car->model }}">
-                        @else
-                            <span>100 x 100</span>
-                        @endif
+                        <img src="{{ $car->display_image_url }}" alt="{{ $car->make }} {{ $car->model }}">
                     </div>
 
                     <div class="offer-plate-block">
@@ -111,3 +107,4 @@
         })();
     </script>
 </x-base-layout>
+

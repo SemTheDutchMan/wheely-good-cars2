@@ -19,6 +19,10 @@
         </div>
 
         <div class="detail-grid">
+            <div class="info-card detail-visual">
+                <img src="{{ $car->display_image_url }}" alt="{{ $car->make }} {{ $car->model }}" loading="lazy">
+            </div>
+
             <div class="info-card">
                 <h2>Specificaties</h2>
                 <dl class="spec-grid">
@@ -71,3 +75,4 @@
         }, 10000);
     </script>
 </x-base-layout>
+

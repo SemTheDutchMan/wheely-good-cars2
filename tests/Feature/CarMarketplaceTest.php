@@ -122,4 +122,89 @@ class CarMarketplaceTest extends TestCase
         ]);
         $this->assertNotNull($car->fresh()->sold_at);
     }
+
+    public function test_car_prefers_exact_model_image_over_brand_fallback(): void
+    {
+        $exactImage = $this->putCatalogImage('orionultra7.png');
+        $brandImage = $this->putCatalogImage('orion.png');
+        Car::flushCatalogImageCache();
+
+        try {
+            $car = Car::factory()->make([
+                'make' => 'Orion',
+                'model' => 'Ultra 7',
+                'image' => null,
+            ]);
+
+            $this->assertSame(asset('img/car-models/orionultra7.png'), $car->display_image_url);
+        } finally {
+            $this->removeCatalogImages([$exactImage, $brandImage]);
+        }
+    }
+
+    public function test_car_uses_brand_image_when_exact_model_image_is_missing(): void
+    {
+        $brandImage = $this->putCatalogImage('nebula.png');
+        Car::flushCatalogImageCache();
+
+        try {
+            $car = Car::factory()->make([
+                'make' => 'Nebula',
+                'model' => 'Roadster',
+                'image' => null,
+            ]);
+
+            $this->assertSame(asset('img/car-models/nebula.png'), $car->display_image_url);
+        } finally {
+            $this->removeCatalogImages([$brandImage]);
+        }
+    }
+
+    public function test_car_uses_one_of_the_available_404_images_when_brand_is_missing(): void
+    {
+        $fallbackA = $this->putCatalogImage('404-city.png');
+        $fallbackB = $this->putCatalogImage('404-suv.png');
+        Car::flushCatalogImageCache();
+
+        try {
+            $car = Car::factory()->make([
+                'make' => 'Quantum',
+                'model' => 'Sprint',
+                'image' => null,
+            ]);
+
+            $this->assertContains($car->display_image_url, [
+                asset('img/car-models/404-city.png'),
+                asset('img/car-models/404-suv.png'),
+                asset('img/car-models/404.png'),
+            ]);
+        } finally {
+            $this->removeCatalogImages([$fallbackA, $fallbackB]);
+        }
+    }
+
+    private function putCatalogImage(string $filename): string
+    {
+        $directory = public_path('img/car-models');
+
+        if (! is_dir($directory)) {
+            mkdir($directory, 0777, true);
+        }
+
+        $path = $directory . DIRECTORY_SEPARATOR . $filename;
+        file_put_contents($path, 'fake image');
+
+        return $path;
+    }
+
+    private function removeCatalogImages(array $paths): void
+    {
+        foreach ($paths as $path) {
+            if (is_file($path)) {
+                @unlink($path);
+            }
+        }
+
+        Car::flushCatalogImageCache();
+    }
 }
