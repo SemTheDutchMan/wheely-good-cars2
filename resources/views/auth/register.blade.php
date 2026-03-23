@@ -36,14 +36,14 @@
                         background: white;
                     "
                 >
-                    <option value="+31" selected>+31 🇳🇱</option>
-                    <option value="+32">+32 🇧🇪</option>
-                    <option value="+49">+49 🇩🇪</option>
-                    <option value="+33">+33 🇫🇷</option>
-                    <option value="+44">+44 🇬🇧</option>
-                    <option value="+34">+34 🇪🇸</option>
-                    <option value="+39">+39 🇮🇹</option>
-                    <option value="+1">+1 🇺🇸</option>
+                    <option value="+31" selected>+31</option>
+                    <option value="+32">+32</option>
+                    <option value="+49">+49</option>
+                    <option value="+33">+33</option>
+                    <option value="+44">+44</option>
+                    <option value="+34">+34</option>
+                    <option value="+39">+39</option>
+                    <option value="+1">+1</option>
                 </select>
 
                 <x-text-input 
