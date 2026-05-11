@@ -262,6 +262,7 @@ textarea:focus {
     gap: 16px;
 }
 
+/* ── Auth layout ── */
 
 .auth-layout {
     min-height: 100vh;
@@ -355,6 +356,7 @@ textarea:focus {
     gap: 12px;
 }
 
+/* ── Inventory grid ── */
 
 .inventory-grid {
     display: grid;
@@ -439,25 +441,24 @@ textarea:focus {
     text-shadow: 0 1px 2px rgba(0,0,0,.25);
 }
 
+/* ── License plate widget ── */
 
 .license-entry-page {
     min-height: calc(100vh - 160px);
     display: grid;
     place-items: center;
-    padding: 24px 0;
 }
 
 .license-hero-form {
-    width: min(820px, 100%);
+    width: min(800px, 100%);
 }
 
 .license-plate-input {
     display: grid;
-    grid-template-columns: 72px 1fr 100px;
+    grid-template-columns: 64px 1fr 88px;
     align-items: stretch;
-    border: 3px solid var(--border);
-    overflow: hidden;
-    background: var(--plate-yellow);
+    border: 2px solid var(--border);
+    background: #fff;
 }
 
 .plate-country,
@@ -477,23 +478,23 @@ textarea:focus {
     font-size: 22px;
     letter-spacing: 0.06em;
     border-right: 3px solid var(--border);
+    background: #fff;
+    border-right: 2px solid var(--border);
 }
 
 .plate-submit {
-    background: var(--plate-orange);
-    color: #fff;
+    background: #fff;
     border: 0;
     border-left: 3px solid var(--border);
     font-size: 26px;
     cursor: pointer;
 }
 
-.plate-submit:hover { filter: brightness(1.08); }
+.plate-submit:hover { background: #f0f0f0; }
 
 .license-plate-input input {
     min-height: 92px;
     border: 0;
-    background: var(--plate-yellow);
     color: var(--ink);
     text-align: center;
     font-size: clamp(32px, 5vw, 54px);
