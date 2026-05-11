@@ -431,6 +431,58 @@ textarea {
     cursor: pointer;
 }
 
+.upload-zone {
+    display: block;
+    cursor: pointer;
+    border: 2px dashed var(--line);
+    background: #f8f8f8;
+    overflow: hidden;
+    position: relative;
+}
+
+.upload-zone:hover {
+    border-color: var(--ink);
+    background: #f2f2f2;
+}
+
+.upload-zone input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    min-height: unset;
+    border: 0;
+}
+
+.upload-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-height: 140px;
+    padding: 24px;
+    text-align: center;
+    pointer-events: none;
+    font-size: 14px;
+}
+
+.upload-icon {
+    font-size: 28px;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.upload-preview-img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    display: block;
+    padding: 12px;
+}
+
 .my-offers-page {
     width: min(1530px, 100%);
     margin: 48px auto 0;
@@ -443,7 +495,7 @@ textarea {
 
 .offer-row {
     display: grid;
-    grid-template-columns: 136px 210px 190px 1fr 320px 230px;
+    grid-template-columns: 136px 210px 190px 1fr 90px 320px 230px;
     align-items: center;
     min-height: 136px;
     border-bottom: 1px solid #bdbdbd;
@@ -501,6 +553,24 @@ textarea {
 .price-value {
     font-size: 22px;
     font-weight: 700;
+}
+
+.offer-views-block {
+    padding: 0 12px;
+    text-align: center;
+}
+
+.offer-views-block strong {
+    display: block;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.offer-views-block .muted-copy {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
 }
 
 .offer-tags-block,
@@ -604,16 +674,19 @@ textarea {
     .offer-plate-block,
     .offer-price-block,
     .offer-title-block,
+    .offer-views-block,
     .offer-tags-block,
     .offer-actions-block {
         padding: 0;
     }
 
     .offer-title-block,
+    .offer-views-block,
     .offer-tags-block,
     .offer-actions-block {
         grid-column: 1 / -1;
         justify-content: flex-start;
+        text-align: left;
     }
 }
 

@@ -35,6 +35,11 @@
                         <strong>{{ strtoupper($car->make) }} {{ strtoupper($car->model) }} {{ $car->production_year }}</strong>
                     </div>
 
+                    <div class="offer-views-block">
+                        <strong>{{ number_format($car->views, 0, ',', '.') }}</strong>
+                        <span class="muted-copy">views</span>
+                    </div>
+
                     <div class="offer-tags-block">
                         @forelse($car->tags as $tag)
                             <span class="status-pill">{{ strtolower($tag->name) }}</span>

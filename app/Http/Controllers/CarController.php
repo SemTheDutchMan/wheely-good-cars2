@@ -123,6 +123,14 @@ class CarController extends Controller
             ]);
         }
 
+        $imagePath = null;
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $file = $request->file('image');
+            $filename = $licensePlate . '_' . time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('img/uploads'), $filename);
+            $imagePath = 'img/uploads/' . $filename;
+        }
+
         $car = Car::create([
             'user_id' => $request->user()->id,
             'license_plate' => $licensePlate,
@@ -135,6 +143,7 @@ class CarController extends Controller
             'production_year' => $validated['year'] ?? null,
             'weight' => $validated['weight'] ?? null,
             'color' => $validated['color'] ?? null,
+            'image' => $imagePath,
         ]);
 
         return redirect()

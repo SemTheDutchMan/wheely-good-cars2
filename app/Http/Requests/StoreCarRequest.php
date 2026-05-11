@@ -32,6 +32,7 @@ class StoreCarRequest extends FormRequest
             'year' => ['nullable', 'integer', 'min:1900', 'max:2100'],
             'weight' => ['nullable', 'integer', 'min:100', 'max:10000'],
             'color' => ['nullable', 'string', 'max:255'],
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,webp', 'max:5120'],
         ];
     }
 

@@ -2,7 +2,7 @@
     <section class="offer-layout">
         <div class="offer-sidebar"></div>
 
-        <form action="{{ route('cars.store') }}" method="POST" class="offer-form">
+        <form action="{{ route('cars.store') }}" method="POST" enctype="multipart/form-data" class="offer-form">
             @csrf
             <input type="hidden" name="license_plate" value="{{ $license_plate }}">
 
@@ -57,7 +57,43 @@
                 </div>
             </label>
 
+            <div class="field field-full">
+                <span>Foto (optioneel)</span>
+                <label class="upload-zone" id="upload-zone">
+                    <input type="file" name="image" accept="image/jpeg,image/png,image/webp" id="car-image-input">
+                    <div class="upload-placeholder" id="upload-placeholder">
+                        <span class="upload-icon">+</span>
+                        <span>Klik om een foto te uploaden</span>
+                        <span class="muted-copy">JPG, PNG of WEBP &middot; max. 5&nbsp;MB</span>
+                    </div>
+                    <img class="upload-preview-img" id="upload-preview" alt="Voorvertoning" hidden>
+                </label>
+                @error('image')
+                    <span style="color:#c00; font-size:13px">{{ $message }}</span>
+                @enderror
+            </div>
+
             <button type="submit" class="wide-submit">Aanbod afronden</button>
         </form>
     </section>
+
+    <script>
+        (() => {
+            const input = document.getElementById('car-image-input');
+            const preview = document.getElementById('upload-preview');
+            const placeholder = document.getElementById('upload-placeholder');
+
+            input.addEventListener('change', () => {
+                const file = input.files[0];
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    preview.src = e.target.result;
+                    preview.hidden = false;
+                    placeholder.hidden = true;
+                };
+                reader.readAsDataURL(file);
+            });
+        })();
+    </script>
 </x-base-layout>
