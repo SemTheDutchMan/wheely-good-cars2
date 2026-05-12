@@ -19,10 +19,8 @@
                     @auth
                         <a href="{{ route('cars.mycars') }}">Mijn aanbod</a>
                         <a href="{{ route('offercar') }}">Aanbod plaatsen</a>
-                        @if (auth()->user()->is_admin)
-                            <a href="{{ route('admin.dashboard') }}">Beheer</a>
-                            <a href="{{ route('admin.live-dashboard') }}">Dashboard</a>
-                        @endif
+                        <a href="{{ route('admin.dashboard') }}">Beheer</a>
+                        <a href="{{ route('admin.live-dashboard') }}">Dashboard</a>
                     @endauth
                 </nav>
             </div>

@@ -8,15 +8,12 @@ use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
 class AdminController extends Controller
 {
-    public function index(Request $request): View
+    public function index(): View
     {
-        $this->ensureAdmin($request);
-
         $tags = Tag::query()
             ->withCount([
                 'cars',
@@ -32,28 +29,20 @@ class AdminController extends Controller
         ]);
     }
 
-    public function dashboard(Request $request): View
+    public function dashboard(): View
     {
-        if ($this->isAdmin($request->user())) {
-            return $this->liveDashboard($request);
-        }
-
-        return view('dashboard');
+        return $this->liveDashboard();
     }
 
-    public function liveDashboard(Request $request): View
+    public function liveDashboard(): View
     {
-        $this->ensureAdmin($request);
-
         return view('admin-live-dashboard', [
             'stats' => $this->buildStats(),
         ]);
     }
 
-    public function stats(Request $request): JsonResponse
+    public function stats(): JsonResponse
     {
-        $this->ensureAdmin($request);
-
         return response()->json($this->buildStats());
     }
 
@@ -145,13 +134,5 @@ class AdminController extends Controller
             ->values();
     }
 
-    private function ensureAdmin(Request $request): void
-    {
-        abort_unless($this->isAdmin($request->user()), 403);
-    }
 
-    private function isAdmin(?User $user): bool
-    {
-        return (bool) ($user?->is_admin ?? false);
-    }
 }

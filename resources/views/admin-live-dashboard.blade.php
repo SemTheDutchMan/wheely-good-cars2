@@ -6,7 +6,6 @@
                 <p class="section-kicker">Realtime aanbodmonitor</p>
                 <h1>WheelyGoodCars live dashboard</h1>
             </div>
-            <p class="muted-copy">Ververst elke 10 seconden en is geschikt voor fullscreen weergave.</p>
         </div>
 
         <div class="metric-grid">
