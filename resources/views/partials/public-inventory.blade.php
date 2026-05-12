@@ -11,7 +11,6 @@
             <p class="section-kicker">Openbare voorraad</p>
             <h1>{{ $cars->total() }} auto's beschikbaar</h1>
         </div>
-        <p class="muted-copy">Zoeken en filteren werkt zonder page reload.</p>
     </div>
 
     @if ($cars->isEmpty())

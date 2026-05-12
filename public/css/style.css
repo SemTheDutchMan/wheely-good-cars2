@@ -82,6 +82,7 @@ ul, ol { margin: 0; }
 
 
 .section-kicker {
+    margin-top: 10px;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.1em;
@@ -105,8 +106,8 @@ ul, ol { margin: 0; }
 
 
 .site-header {
-    border-bottom: 1px solid var(--border);
-    background: #f4f4f4;
+    border-bottom: 1px solid var(--plate-blue);
+    background: var(--plate-blue);
 }
 
 .topbar {
@@ -128,14 +129,16 @@ ul, ol { margin: 0; }
 .brand {
     font-size: 17px;
     font-weight: 700;
+    color: #fff;
 }
 
 .topnav a {
     font-size: 14px;
     font-weight: 600;
+    color: rgba(255,255,255,0.85);
 }
 
-.topnav a:hover { text-decoration: underline; }
+.topnav a:hover { color: #fff; text-decoration: underline; }
 
 .nav-logout {
     border: 0;
@@ -144,9 +147,10 @@ ul, ol { margin: 0; }
     cursor: pointer;
     font-size: 14px;
     font-weight: 600;
+    color: rgba(255,255,255,0.85);
 }
 
-.nav-logout:hover { text-decoration: underline; }
+.nav-logout:hover { color: #fff; text-decoration: underline; }
 
 
 .flash {
@@ -183,8 +187,11 @@ ul, ol { margin: 0; }
     white-space: nowrap;
 }
 
+.button,
+.btn { background: var(--plate-blue); color: #fff; border-color: var(--plate-blue); }
+
 .button:hover,
-.btn:hover { background: var(--ink); color: #fff; }
+.btn:hover { background: #163d82; border-color: #163d82; }
 
 .button-danger { background: #c00; color: #fff; border-color: #c00; }
 .button-danger:hover { background: #900; border-color: #900; }
@@ -210,7 +217,7 @@ ul, ol { margin: 0; }
 }
 
 .input:focus {
-    outline: 2px solid var(--ink);
+    outline: 2px solid var(--plate-blue);
     outline-offset: -2px;
 }
 
@@ -238,7 +245,7 @@ textarea {
 input:focus,
 select:focus,
 textarea:focus {
-    outline: 2px solid var(--ink);
+    outline: 2px solid var(--plate-blue);
     outline-offset: -2px;
 }
 
@@ -406,8 +413,8 @@ textarea:focus {
 }
 
 .price-chip {
-    border: 1px solid var(--border);
-    background: var(--ink);
+    border: 1px solid var(--plate-blue);
+    background: var(--plate-blue);
     color: #fff;
     padding: 2px 10px;
     font-size: 13px;
@@ -454,11 +461,12 @@ textarea:focus {
 }
 
 .license-plate-input {
+    border-radius: 10px;
     display: grid;
     grid-template-columns: 64px 1fr 88px;
     align-items: stretch;
     border: 2px solid var(--border);
-    background: #fff;
+    overflow: hidden;
 }
 
 .plate-country,
@@ -475,59 +483,54 @@ textarea:focus {
 .plate-country {
     background: var(--plate-blue);
     color: #fff;
-    font-size: 22px;
-    letter-spacing: 0.06em;
-    border-right: 3px solid var(--border);
-    background: #fff;
+    font-size: 18px;
+    letter-spacing: 0.05em;
     border-right: 2px solid var(--border);
 }
 
 .plate-submit {
-    background: #fff;
+    background: var(--plate-orange);
+    color: #fff;
     border: 0;
-    border-left: 3px solid var(--border);
-    font-size: 26px;
+    border-left: 2px solid var(--border);
+    font-size: 16px;
     cursor: pointer;
 }
 
-.plate-submit:hover { background: #f0f0f0; }
+.plate-submit:hover { filter: brightness(1.1); }
 
-.license-plate-input input {
+.license-plate-input input:not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
     min-height: 92px;
     border: 0;
-    color: var(--ink);
+    background: var(--plate-yellow);
     text-align: center;
-    font-size: clamp(32px, 5vw, 54px);
-    font-weight: 800;
-    letter-spacing: 0.12em;
+    font-size: 44px;
+    letter-spacing: 1px;
     text-transform: uppercase;
     outline: 0;
+    padding: 0;
 }
 
 .license-plate-input input::placeholder {
-    color: rgba(0,0,0,.35);
-    letter-spacing: 0.08em;
+    color: rgba(0,0,0,0.3);
 }
 
 
 .inline-plate {
     display: grid;
-    grid-template-columns: 60px 1fr;
-    border: 3px solid var(--border);
+    grid-template-columns: 64px 1fr;
+    border: 2px solid var(--border);
     background: var(--plate-yellow);
     overflow: hidden;
-    width: min(360px, 100%);
+    width: min(400px, 100%);
 }
 
 .plate-value {
-    min-height: 70px;
-    font-size: 26px;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-    font-family: "Arial Black", Arial, sans-serif;
-    background: var(--plate-yellow);
-    color: var(--ink);
+    min-height: 76px;
+    font-size: 28px;
+    letter-spacing: 1px;
     padding: 0 16px;
+    background: var(--plate-yellow);
 }
 
 /* ── Offer form (step 2) ── */
@@ -592,14 +595,15 @@ textarea:focus {
 .wide-submit {
     grid-column: 1 / -1;
     min-height: 52px;
-    border: 1px solid var(--border);
-    background: var(--surface);
+    border: 1px solid var(--plate-blue);
+    background: var(--plate-blue);
+    color: #fff;
     font-size: 17px;
     font-weight: 700;
     cursor: pointer;
 }
 
-.wide-submit:hover { background: var(--ink); color: #fff; }
+.wide-submit:hover { background: #163d82; border-color: #163d82; }
 
 
 .upload-zone {
@@ -769,9 +773,9 @@ textarea:focus {
 .page-link:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
 
 .page-link-active {
-    background: var(--ink);
+    background: var(--plate-blue);
     color: #fff;
-    border-color: var(--ink);
+    border-color: var(--plate-blue);
     pointer-events: none;
 }
 
@@ -993,8 +997,8 @@ textarea:focus {
 
     .offer-sidebar { display: none; }
 
-    .license-plate-input { grid-template-columns: 56px 1fr 76px; }
-    .license-plate-input input { min-height: 72px; font-size: 28px; }
+    .license-plate-input { grid-template-columns: 52px 1fr 72px; }
+    .license-plate-input input { min-height: 74px; font-size: 28px; }
 
     .inline-plate { width: 100%; }
 

@@ -270,21 +270,6 @@
     </div>
   </div>
 
-  <div class="section">
-    <p class="section-title">Voorwaarden en disclaimer</p>
-    <div class="terms">
-      <p class="muted">Dit document is informatief en niet bindend.</p>
-      <ul>
-        <li>Prijzen en beschikbaarheid zijn onder voorbehoud van bevestiging door de aanbieder.</li>
-        <li>Specificaties en kilometerstand zijn gebaseerd op ingevoerde of externe gegevens en kunnen afwijken.</li>
-        <li>Wijzigingen, typefouten en omissies voorbehouden.</li>
-        <li>Wij adviseren een inspectie en proefrit voor aankoop.</li>
-        <li>De uiteindelijke verkoopvoorwaarden worden vastgelegd in het koopcontract.</li>
-      </ul>
-      <p class="muted">Wheely Good Cars is niet aansprakelijk voor onjuistheden in dit overzicht.</p>
-    </div>
-  </div>
-
   <div class="foot">
     Opgesteld voor <strong>{{ $user->name ?? $user->email }}</strong>.
     Dit overzicht is automatisch gegenereerd en kan afwijken van de uiteindelijke verkoopinformatie.
